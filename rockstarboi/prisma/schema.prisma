@@ -1,0 +1,38 @@
+// schema.prisma
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+model Post {
+  action    String?
+  author    User?    @relation(fields: [authorId], references: [id])
+  authorId  Int?
+  createdAt DateTime @default(now()) @map(name: "created_at")
+  content   String? // TODO: remove
+  employer  String?
+  id        Int      @id @default(autoincrement())
+  notes     String?
+  obstacle  String?
+  published Boolean  @default(false)
+  result    String?
+  situation String?
+  task      String?
+  title     String
+  updatedAt DateTime @updatedAt @map(name: "updated_at")
+}
+
+model User {
+  id        Int      @id @default(autoincrement())
+  name      String?
+  email     String?  @unique
+  createdAt DateTime @default(now()) @map(name: "created_at")
+  updatedAt DateTime @updatedAt @map(name: "updated_at")
+  posts     Post[]
+
+  @@map(name: "users")
+}
