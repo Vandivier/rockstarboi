@@ -12,10 +12,12 @@
   "license": "MIT",
   "dependencies": {
     "@prisma/client": "2.29.1",
+    "babel-plugin-superjson-next": "^0.3.1",
     "next": "9.5.5",
     "react": "16.14.0",
     "react-dom": "16.14.0",
-    "react-markdown": "5.0.2"
+    "react-markdown": "5.0.2",
+    "superjson": "^1.7.5"
   },
   "devDependencies": {
     "@types/next-auth": "3.1.14",
